@@ -1,7 +1,7 @@
-import { baseModel } from "./base.model";
-
-export class atividade extends baseModel{
+class atividade{
     titulo;
     descricao;
     dataEntrega;
 }
+
+module.exports = atividade;

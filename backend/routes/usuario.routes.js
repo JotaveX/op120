@@ -6,7 +6,11 @@ var bodyParser = require('body-parser')
 var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-router.post('/user', urlencodedParser, TaskController.createUsuario);
-router.get('/user',urlencodedParser, TaskController.getUsuario);
+router.post('/', jsonParser, TaskController.createUsuario);
+router.get('/', TaskController.getUsuario);
+router.get('/:id', TaskController.getUsuarioById);
+router.put('/:id', jsonParser, TaskController.updateUsuario);
+router.delete('/:id', TaskController.deleteUsuario);
+
 
 module.exports = router;
