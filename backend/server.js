@@ -2,11 +2,17 @@ const express = require('express');
 const ususarioRoutes = require('./routes/usuario.routes');
 const atividadeRoutes = require('./routes/atividade.routes');
 const usuarioAtividadeRoutes = require('./routes/usuario-atividade.routes');
+const cors = require('cors');
 
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
+
+
+
+
 
 // Define your routes here
 app.use('/usuario', ususarioRoutes);

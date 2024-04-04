@@ -14,7 +14,7 @@ class usuarioController{
             console.log(data);
             res.json({message:"Usuario criado com sucesso!"})
         }).catch(error=>{
-            res.error(error);
+            res.json(error);
         });
     }
 
@@ -22,7 +22,7 @@ class usuarioController{
         database.select("*").table("usuario").then(data=>{
             res.json(data);
         }).catch(error=>{
-            res.error(error);
+            res.json(error);
         })
     }
 
@@ -31,7 +31,7 @@ class usuarioController{
         database.select("*").table("usuario").where({id:id}).then(data=>{
             res.json(data);
         }).catch(error=>{
-            res.error(error);
+            res.json(error);
         })
     }
 
@@ -53,7 +53,7 @@ class usuarioController{
         database.where({id:id}).del().table("usuario").then(data=>{
             res.json({message:"Usuario deletado com sucesso!"})
         }).catch(error=>{
-            res.error(error);
+            res.json(error);
         });
     }
 }

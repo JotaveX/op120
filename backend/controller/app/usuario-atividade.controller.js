@@ -13,7 +13,7 @@ class usuarioAtividadeController{
             console.log(data);
             res.json({message:"Usuario Atividade criado com sucesso!"})
         }).catch(error=>{
-            res.error(error);
+            res.json(error);
         });
     }
 
@@ -21,7 +21,7 @@ class usuarioAtividadeController{
         database.select("*").table("usuario_atividade").then(data=>{
             res.json(data);
         }).catch(error=>{
-            res.error(error);
+            res.json(error);
         })
     }
 
@@ -30,7 +30,7 @@ class usuarioAtividadeController{
         database.select("*").table("usuario_atividade").where({id:id}).then(data=>{
             res.json(data);
         }).catch(error=>{
-            res.error(error);
+            res.json(error);
         })
     }
 
@@ -42,7 +42,7 @@ class usuarioAtividadeController{
         database.where({id:id}).update(usuarioAtividade).table("usuario_atividade").then(data=>{
             res.json({message:"Usuario Atividade atualizado com sucesso!"})
         }).catch(error=>{
-            res.error(error);
+            res.json(error);
         });
     }
 
@@ -52,7 +52,7 @@ class usuarioAtividadeController{
         database.where({id:id}).del().table("usuario_atividade").then(data=>{
             res.json({message:"Usuario Atividade deletado com sucesso!"})
         }).catch(error=>{
-            res.error(error);
+            res.json(error);
         });
     }
 }

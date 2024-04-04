@@ -19,7 +19,7 @@ class atividadeController{
         database.select("*").table("atividade").then(data=>{
             res.json(data);
         }).catch(error=>{
-            res.error(error);
+            res.json(error);
         })
     }
 
@@ -28,7 +28,7 @@ class atividadeController{
         database.select("*").table("atividade").where({id:id}).then(data=>{
             res.json(data);
         }).catch(error=>{
-            res.error(error);
+            res.json(error);
         })
     }
 
@@ -40,7 +40,7 @@ class atividadeController{
         database.where({id:id}).update(atividade).table("atividade").then(data=>{
             res.json({message:"Atividade atualizada com sucesso!"})
         }).catch(error=>{
-            res.error(error);
+            res.json(error);
         });
     }
 
@@ -48,9 +48,10 @@ class atividadeController{
         let id = req.params.id;
 
         database.where({id:id}).del().table("atividade").then(data=>{
+            print(data);
             res.json({message:"Atividade deletada com sucesso!"})
         }).catch(error=>{
-            res.error(error);
+            res.json(error);
         });
     }
 }
