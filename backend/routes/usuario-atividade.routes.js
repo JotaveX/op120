@@ -1,14 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const usuarioAtividadeController = require('../controller/app/usuario-atividade.controller');
-var bodyParser = require('body-parser')
-var jsonParser = bodyParser.json()
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+const authMiddleware = require('../controller/middleware/auth.middleware');
 
-router.get('/', usuarioAtividadeController.getUsuarioAtividade);
-router.get('/:id', usuarioAtividadeController.getUsuarioAtividadeById);
-router.post('/', jsonParser, usuarioAtividadeController.createUsuarioAtividade);
-router.put('/:id', jsonParser, usuarioAtividadeController.updateUsuarioAtividade);
-router.delete('/:id', usuarioAtividadeController.deleteUsuarioAtividade);
+
+router.get('/', authMiddleware, usuarioAtividadeController.getUsuarioAtividade);
+router.get('/:id', authMiddleware, usuarioAtividadeController.getUsuarioAtividadeById);
+router.post('/', authMiddleware , usuarioAtividadeController.createUsuarioAtividade);
+router.put('/:id', authMiddleware, usuarioAtividadeController.updateUsuarioAtividade);
+router.delete('/:id', authMiddleware, usuarioAtividadeController.deleteUsuarioAtividade);
 
 module.exports = router;

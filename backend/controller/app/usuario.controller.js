@@ -1,11 +1,18 @@
 const database = require('../database/connection');
-const usuarioModel = require('../../model/usuario.model')
+const usuarioModel = require('../../model/usuario.model');
+const bcrypt = require('bcrypt');
+
 
 class usuarioController{
     createUsuario(req,res){
         let usuario = new usuarioModel;
         
         usuario = req.body;
+
+        const salt = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync(usuario.senha, salt);
+
+        usuario.senha = hash;
 
         console.log(usuario);
 
@@ -55,6 +62,10 @@ class usuarioController{
         }).catch(error=>{
             res.json(error);
         });
+    }
+
+    checkPassword(senha,senhaDB){
+        return bcrypt.compareSync(senha,senhaDB);
     }
 }
 
